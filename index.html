@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Parking Availability</h2>
+    <p><strong>{{ available }}</strong> of <strong>{{ total }}</strong> slots free right now.</p>
+
+    <div class="slot-grid">
+        {% for slot in slots %}
+            <div class="slot {{ slot['status'] }}">
+                <span class="slot-number">{{ slot['slot_number'] }}</span>
+                <span class="slot-status">{{ slot['status']|capitalize }}</span>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="legend">
+        <span class="dot available"></span> Available
+        <span class="dot occupied"></span> Occupied
+    </div>
+{% endblock %}

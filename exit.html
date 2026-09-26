@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Vehicle Exit &amp; Payment</h2>
+
+    <form method="POST" class="card-form">
+        <label for="plate_number">Number Plate</label>
+        <input type="text" id="plate_number" name="plate_number"
+               placeholder="e.g. KDA 123A" required autofocus>
+        <button type="submit">Calculate &amp; Pay</button>
+    </form>
+
+    {% if receipt %}
+        <div class="receipt">
+            <h3>Receipt</h3>
+            <p>Plate: <strong>{{ receipt.plate_number }}</strong></p>
+            <p>Time parked: <strong>{{ receipt.duration }}</strong></p>
+            <p>Amount paid: <strong>Kshs. {{ receipt.fee }}</strong></p>
+            <p class="barrier-open">🚧 Barrier open — you may exit.</p>
+        </div>
+    {% endif %}
+{% endblock %}

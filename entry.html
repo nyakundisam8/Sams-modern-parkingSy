@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Vehicle Entry</h2>
+    <p>{{ available_count }} slot(s) currently available.</p>
+
+    <form method="POST" class="card-form">
+        <label for="plate_number">Number Plate</label>
+        <input type="text" id="plate_number" name="plate_number"
+               placeholder="e.g. KDA 123A" required autofocus>
+        <button type="submit">Enter &amp; Assign Slot</button>
+    </form>
+{% endblock %}
