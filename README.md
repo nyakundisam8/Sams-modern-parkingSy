@@ -27,14 +27,23 @@ RETURN success + slot_number
 ### Module 3 — Fee Calculation
 ALGORITHM CalculateFee(entry_time, exit_time)
 
-duration = exit_time - entry_time (in minutes)
-IF duration <= 30 -> fee = 0
-ELSE IF duration <= 120 -> fee = 50
-ELSE IF duration <= 240 -> fee = 100
-ELSE IF duration <= 360 -> fee = 300
-ELSE -> fee = 500
-RETURN duration, fee
+
+**Fee Table:**
+
+| Duration Parked | Fee (Kshs.) |
+|---|---|
+| Up to 30 minutes | Free (0) |
+| Up to 2 hours | 50 |
+| Up to 4 hours | 100 |
+| Up to 6 hours | 300 |
+| Over 6 hours | 500 |
 ALGORITHM ProcessExit(plate_number)
+
+export DARAJA_CONSUMER_KEY="your_key"
+export DARAJA_CONSUMER_SECRET="your_secret"
+export DARAJA_SHORTCODE="your_shortcode"
+export DARAJA_PASSKEY="your_passkey"
+export DARAJA_CALLBACK_URL="https://your-public-url/mpesa/callback"
 
 vehicle = FIND row WHERE plate_number = ? AND status = 'parked'
 IF not found -> RETURN error
